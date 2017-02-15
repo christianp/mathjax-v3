@@ -99,7 +99,7 @@ export class Tree implements Visitable {
     node.setAttributes(json['attributes'] || {});
     node.setTexAtom(json['TeXAtom'] || '');
     if (json['inferred']) {
-      if (node.getKind() !== Kind.mrow) {
+      if (node.kind !== Kind.mrow) {
         throw new Error('Only mrow nodes can be inferred!');
       }
       (node as NodeMrow).setInferred();

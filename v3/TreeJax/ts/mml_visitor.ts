@@ -57,7 +57,7 @@ export class MmlVisitor implements Visitor {
    * @param {TreeNode} node The node to add to the result
    */
   public visitNode(node: TreeNode) {
-    let kind = Tag.get(node.getKind());
+    let kind = Tag.get(node.kind);
     if (!(MML[kind] && MML[kind].isa && MML[kind].isa(MML.mbase))) {
       throw Error('No implementation for nodes of type "'+kind+'"');
     }

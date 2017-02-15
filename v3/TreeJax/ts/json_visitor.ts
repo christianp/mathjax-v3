@@ -46,7 +46,7 @@ export class JsonVisitor implements Visitor {
   
   public visitNode(node: TreeNode) {
     let json: any = {};
-    json['type'] = Tag.get(node.getKind());
+    json['type'] = Tag.get(node.kind);
     json['attributes'] = node.getAttributes();
     let texAtom = node.getTexAtom();
     if (node.isInferred()) {

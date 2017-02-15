@@ -118,7 +118,7 @@ export abstract class AbstractVisitor implements Visitor {
    * @override
    */
   public visitNode(node: TreeNode) {
-    let func = this.visitorMap.get(node.getKind());
+    let func = this.visitorMap.get(node.kind);
     if (func) {
       func(node);
     }

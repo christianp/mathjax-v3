@@ -125,7 +125,7 @@ export interface TreeNode extends Visitable {
   /**
    * @return {Kind} The type of the node.
    */
-  getKind(): Kind;
+  readonly kind: Kind;
 
   /**
    * @return {TreeNode} The parent of the node.
@@ -154,7 +154,7 @@ export interface TreeNode extends Visitable {
   /**
    * @return {number|boolean} The arity of the node.
    */
-  getArity(): number|boolean;
+  readonly arity: number|boolean;
 
   /**
    * Sets the attributes of the node.
@@ -202,27 +202,27 @@ export abstract class AbstractNode implements TreeNode {
   private parent: TreeNode;
   private tag: string;
   private texAtom: string = '';
-
+  
   /**
    * @param {string} kind The type of node.
    * @param {number} arity The arity of the node.
    * @constructor
    * @implements {TreeNode}
    */
-  constructor(private kind: Kind, private arity: number|boolean) { };
+  constructor(private _kind: Kind, private _arity: number|boolean) { };
 
   /**
    * @override
    */
-  public getKind() {
-    return this.kind;
+  public get kind() {
+    return this._kind;
   }
 
   /**
    * @override
    */
-  public getArity() {
-    return this.arity;
+  public get arity() {
+    return this._arity;
   }
 
   /**
@@ -250,14 +250,14 @@ export abstract class AbstractNode implements TreeNode {
    * @override
    */
   public setChildren(children: TreeNode[]) {
-    let arity = this.getArity();
+    let arity = this.arity;
     if (arity === true ||
         (!arity && !children.length) ||
         arity === children.length) {
       this.children = children;
     } else {
       throw('Wrong number of arguments for type ' +
-            Tag.get(this.getKind()) + '.');
+            Tag.get(this.kind) + '.');
     }
   }
 

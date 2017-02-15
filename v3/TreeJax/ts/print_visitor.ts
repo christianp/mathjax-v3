@@ -355,7 +355,7 @@ export class PrintVisitor extends AbstractVisitor {
    */
   private printNode(node: TreeNode, func: Function, output: string) {
     let str = (new Array(this.indent + 1)).join(' ');
-    str += Tag.get(node.getKind());
+    str += Tag.get(node.kind);
     let list: string[] = [];
     let attr: string = this.printAttributes(node.getAttributes());
     if (attr) {

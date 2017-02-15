@@ -362,7 +362,7 @@ export class MathmlVisitor extends AbstractVisitor {
    */
   private xmlNode(node: TreeNode, func: Function, text: string) {
     let save = this.current;
-    this.current = document.createElement(Tag.get(node.getKind()));
+    this.current = document.createElement(Tag.get(node.kind));
     save.appendChild(this.current);
     this.addAttributes(node.getAttributes());
     if (text) {
